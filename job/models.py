@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -14,6 +15,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('job:opportunity_list_by_category', args=[self.slug])
+
+
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedManager, self).get_queryset().filter(status='published')
 
 
 class Opportunity(models.Model):
@@ -34,11 +43,17 @@ class Opportunity(models.Model):
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='disable')
 
+    objects = models.Manager()
+    published = PublishedManager()
+
     class Meta:
         ordering = ('-activated',)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('job:opportunity_detail', args=[self.id, self.slug])
 
 
 
