@@ -1,13 +1,11 @@
-{% block title %}Opportunity{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-    {% if text %}
-        <h1>Informação enviado com sucesso</h1>
-    {% else %}
-        <h1>Opportunity</h1>
-        <form action="" method="post">
-            {{ opportunity_form }}
-            <input type="submit" value="enviar">
-        </form>
-    {% endif %}
+    <p class="date">
+        Published {{ opportunity.activated }} by {{ opportunity.author }}
+    </p>
+    <h1>{{ opportunity.title }}</h1>
+    {{ opportunity.description|linebreaks }}
+    R$ {{ opportunity.wage}}
+
 {% endblock %}
