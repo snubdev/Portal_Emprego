@@ -5,7 +5,15 @@
         Published {{ opportunity.activated }} by {{ opportunity.author }}
     </p>
     <h1>{{ opportunity.title }}</h1>
+
+    <h3>Descrição</h3>
     {{ opportunity.description|linebreaks }}
+
+    <h3>Salario</h3>
     R$ {{ opportunity.wage}}
+
+    <h3>Regime de Contrato</h3>
+    {{ opportunity.hr}}
+
 
 {% endblock %}

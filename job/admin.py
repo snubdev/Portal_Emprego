@@ -12,7 +12,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class OpportunityAdmin(admin.ModelAdmin):
     list_display = ['category', 'title', 'slug', 'author',
                     'image', 'wage', 'description', 'activated',
-                    'create', 'update', 'status']
+                    'create', 'update', 'status', 'hr']
     list_display = ['category', 'title', 'activated']
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}

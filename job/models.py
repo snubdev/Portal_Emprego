@@ -31,6 +31,14 @@ class Opportunity(models.Model):
         ('activated', 'Activated')
     )
 
+    STATUS_Hiring_Regime = (
+        ('clt', 'CLT (Efetivo)'),
+        ('pj', 'Pessoa Jurídica'),
+        ('temporario', 'Temporario'),
+        ('estagio', 'Estágio'),
+        ('trainee', 'Trainne')
+    )
+
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     slug = models.CharField(max_length=250, unique_for_date='activated')
@@ -42,6 +50,7 @@ class Opportunity(models.Model):
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='disable')
+    hr = models.CharField(max_length=20, choices=STATUS_Hiring_Regime, default='')
 
     objects = models.Manager()
     published = PublishedManager()
