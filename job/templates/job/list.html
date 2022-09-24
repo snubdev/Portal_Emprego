@@ -20,7 +20,7 @@
     </ul>
   </div>
   <div id="main" class="product-list">
-    <h1>{% if category %}{{ category.name }}{% else %}opportunitys{% endif %}</h1>
+    <h1>{% if category %}{{ category.name }}{% else %}Vagas{% endif %}</h1>
     {% for opportunity in opportunitys %}
       <div class="item">
         <a href="{{ opportunity.get_absolute_url }}">

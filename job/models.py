@@ -32,6 +32,7 @@ class Opportunity(models.Model):
     )
 
     STATUS_Hiring_Regime = (
+        ('', ''),
         ('clt', 'CLT (Efetivo)'),
         ('pj', 'Pessoa Jurídica'),
         ('temporario', 'Temporario'),
@@ -44,13 +45,14 @@ class Opportunity(models.Model):
     slug = models.CharField(max_length=250, unique_for_date='activated')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_opportunity')
     image = models.ImageField(upload_to='opportunity/%Y/%m/%d', blank=True)
-    wage = models.DecimalField(max_digits=5, decimal_places=True)
+    wage = models.DecimalField(max_digits=10, decimal_places=True)
     description = models.TextField(blank=True)
     activated = models.DateTimeField(default=timezone.now)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='disable')
     hr = models.CharField(max_length=20, choices=STATUS_Hiring_Regime, default='')
+    benefits = models.TextField(blank=True)
 
     objects = models.Manager()
     published = PublishedManager()
