@@ -24,6 +24,7 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
+n = 0
 
 class Opportunity(models.Model):
     STATUS_CHOICES = (
@@ -44,7 +45,7 @@ class Opportunity(models.Model):
     title = models.CharField(max_length=250)
     slug = models.CharField(max_length=250, unique_for_date='activated')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_opportunity')
-    image = models.ImageField(upload_to='opportunity/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to=f'{n+1} - opportunity/%Y/%m/%d', blank=True)
     wage = models.DecimalField(max_digits=10, decimal_places=True)
     description = models.TextField(blank=True)
     activated = models.DateTimeField(default=timezone.now)

@@ -14,7 +14,7 @@ def opportunity_list(request, category_slug=None):
                                                      'categories': categories,
                                                      'opportunitys': opportunitys})
 
-
 def opportunity_detail(request, id, slug):
     opportunity = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
+
     return render(request, 'job/detail.html', {'opportunity': opportunity})
