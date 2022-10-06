@@ -68,4 +68,19 @@ class Opportunity(models.Model):
         return reverse('job:opportunity_detail', args=[self.id, self.slug])
 
 
+class Job_Registration(models.Model):
+    opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name='job_registration')
+    name = models.CharField(max_length=250)
+    email = models.EmailField(max_length=250)
+    phone = models.IntegerField(max_length=11)
+    curriculum = models.FileField(upload_to='pdfs/')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('created', )
+
+    def __str__(self):
+        return f'Application made by {self.name} for the position {self.opportunity}'
 

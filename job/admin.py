@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Opportunity
+from .models import Category, Opportunity, Job_Registration
 
 
 @admin.register(Category)
@@ -13,9 +13,14 @@ class OpportunityAdmin(admin.ModelAdmin):
     list_display = ['category', 'title', 'slug', 'author',
                     'image', 'wage', 'description', 'activated',
                     'create', 'update', 'status', 'hr']
-    list_display = ['category', 'title', 'activated']
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'activated'
     ordering = ['status', 'activated']
 
+
+@admin.register(Job_Registration)
+class Job_RegistrationAdmin(admin.ModelAdmin):
+    list_display = ['opportunity', 'name', 'email', 'created', 'active']
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ['post']
