@@ -69,7 +69,7 @@ class Opportunity(models.Model):
 
 
 class Job_Registration(models.Model):
-    opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name='job_registration')
+    opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name='job_registrations')
     name = models.CharField(max_length=250)
     email = models.EmailField(max_length=250)
     phone = models.IntegerField(max_length=11)

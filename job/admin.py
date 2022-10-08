@@ -23,4 +23,4 @@ class OpportunityAdmin(admin.ModelAdmin):
 class Job_RegistrationAdmin(admin.ModelAdmin):
     list_display = ['opportunity', 'name', 'email', 'created', 'active']
     list_filter = ('active', 'created', 'updated')
-    search_fields = ['post']
+    search_fields = ['opportunity']

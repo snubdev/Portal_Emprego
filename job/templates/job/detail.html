@@ -22,6 +22,19 @@
         {{ opportunity.benefits}}
     </div>
 
+    <div class="job_registrations">
+        {% if new_registraion %}
+            <h2>Seu registro adicionado.</h2>
+        {% else %}
+            <h2>Adicione um novo registro</h2>
+            <form method="post" enctype ="multipart/form-data">
+                {{ registraion_form.as_p }}
+                {% csrf_token %}
+                <p><input type="submit" value="Adicionar comentário"></p>
+            </form>
+        {% endif %}
+    </div>
+
 
 
 {% endblock %}
