@@ -4,6 +4,12 @@
     <p class="date">
         Published {{ opportunity.activated }} by {{ opportunity.author }}
     </p>
+
+    <p class="total_job_registrations">
+        {% with job_registrations.count as total_job_registrations %}
+            Mais de {{ total_job_registrations }} candidatura{{ total_job_registrations|pluralize }}
+        {% endwith %}
+    </p>
     <h1>{{ opportunity.title }}</h1>
     <div class="opportunity">
         <h3>Descrição</h3>

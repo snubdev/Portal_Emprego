@@ -18,6 +18,7 @@ def opportunity_list(request, category_slug=None):
 def opportunity_detail(request, id, slug):
     opportunity = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
 
+    job_registrations = opportunity.job_registrations.filter(active=True)
     new_registraion = None
 
     if request.method == 'POST':
@@ -29,6 +30,7 @@ def opportunity_detail(request, id, slug):
     else:
         registraion_form = Job_RegistraionForm()
 
-    return render(request, 'job/detail.html', {'opportunity': opportunity,
+    return render(request, 'job/detail.html', {'job_registrations': job_registrations,
+                                               'opportunity': opportunity,
                                                'new_registraion': new_registraion,
                                                'registraion_form': registraion_form})

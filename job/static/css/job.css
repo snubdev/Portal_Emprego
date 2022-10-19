@@ -21,7 +21,7 @@ a:hover {
 
 a.button, input[type="submit"] {
     color:#fff;
-    background:#5993bb;
+    background:#0197ff;
     border-radius:4px;
     padding:10px 20px;
     font-size:14px;
@@ -349,4 +349,11 @@ form div.field {
 
 .job_registrations {
     padding-top: 20px;
+}
+
+.total_job_registrations {
+    color: #8f8f8f;
+    font-size: 14px;
+    top: -10px;
+    position: relative;
 }
