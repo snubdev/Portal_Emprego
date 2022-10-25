@@ -7,3 +7,7 @@ class Job_RegistraionForm(forms.ModelForm):
         model = Job_Registration
         fields = ('name', 'email', 'phone', 'curriculum')
 
+
+class SearchForm(forms.Form):
+    query = forms.CharField()
+

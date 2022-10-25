@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Opportunity, Job_Registration
-from .forms import Job_RegistraionForm
+from .forms import Job_RegistraionForm, SearchForm
+from django.contrib.postgres.search import SearchVector
 
 
 def opportunity_list(request, category_slug=None):
@@ -34,3 +35,17 @@ def opportunity_detail(request, id, slug):
                                                'opportunity': opportunity,
                                                'new_registraion': new_registraion,
                                                'registraion_form': registraion_form})
+
+def job_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Opportunity.published.annotate(search=SearchVector('title'),).filter(search=query)
+    return render(request, 'job/search.html', {'form': form,
+                                               'query': query,
+                                               'results': results})
