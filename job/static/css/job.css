@@ -125,8 +125,9 @@ ul.errorlist {
 #subheader {
     background:#ececec;
     color:#444;
-    padding:15px 100px;
+    padding:1px 100px;
     overflow:auto;
+    border-radius: 10px;
 }
 
 #header .logo {
@@ -363,4 +364,10 @@ form div.field {
     padding:4px;
     overflow:auto;
     margin-top: 20px
+}
+
+.button-search {
+    position: relative;
+    top: 10px;
+    left: 6px;
 }

@@ -10,9 +10,9 @@
           Found {{ total_results }} result{{ total_results|pluralize }}
       {% endwith %}
     </h3>
-    {% for opportunity in results %}
-        <h4><a href="{{ opportunity.get_absolute_url }}">{{ opportunity.title }}</a></h4>
-        {{ opportunity.title}}
+    {% for opportunitys in results %}
+        <h4><a href="{{ opportunitys.get_absolute_url }}">{{ opportunitys.title }}</a></h4>
+        {{ opportunitys.title}}
     {% empty %}
       <p>There are no results for your query.</p>
     {% endfor %}
@@ -21,7 +21,7 @@
     <h1>Search for posts</h1>
     <form method="get">
       {{ form.as_p }}
-      <input type="submit" value="Search">
+      <input class="button-search" type="submit" value="Search">
     </form>
   {% endif %}
 {% endblock %}
