@@ -348,7 +348,7 @@ form div.field {
 }
 
 .job_registrations {
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .total_job_registrations {
@@ -356,4 +356,11 @@ form div.field {
     font-size: 14px;
     top: -10px;
     position: relative;
+}
+
+#subheader-2 {
+    background:#ececec;
+    padding:4px;
+    overflow:auto;
+    margin-top: 20px
 }

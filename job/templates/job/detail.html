@@ -11,6 +11,7 @@
         {% endwith %}
     </p>
     <h1>{{ opportunity.title }}</h1>
+    <p class="tags">Tags: {{ opportunity.tags.all|join:", "}}</p>
     <div class="opportunity">
         <h3>Descrição</h3>
         <div class="descrição">
@@ -27,6 +28,8 @@
 
         {{ opportunity.benefits}}
     </div>
+
+    <div id="subheader-2"></div>
 
     <div class="job_registrations">
         {% if new_registraion %}

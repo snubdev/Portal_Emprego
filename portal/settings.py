@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'job.apps.JobConfig',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE = [

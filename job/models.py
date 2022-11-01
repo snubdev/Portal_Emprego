@@ -23,7 +23,6 @@ class Category(models.Model):
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
-
 n = 0
 
 class Opportunity(models.Model):
