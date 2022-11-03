@@ -127,7 +127,7 @@ ul.errorlist {
     color:#444;
     padding:1px 100px;
     overflow:auto;
-    border-radius: 10px;
+    border-radius: 110px;
 }
 
 #header .logo {
@@ -171,7 +171,7 @@ ul.errorlist {
 
 #sidebar ul li.selected {
     background:#0197ff;
-    border-radius:4px;
+    border-radius:110px;
 }
 
 #sidebar ul li.selected a {
@@ -368,6 +368,15 @@ form div.field {
 
 .button-search {
     position: relative;
-    top: 10px;
+    top: 19px;
     left: 6px;
+}
+
+.button-search-2 {
+    background: #0197ff;
+    border-radius: 110px;
+    padding: 10px;
+    position: relative;
+    top: 4px;
+    color: aliceblue;
 }

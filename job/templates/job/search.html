@@ -4,7 +4,7 @@
 
 {% block content %}
   {% if query %}
-    <h1>Posts containing "{{ query }}"</h1>
+    <h1>Postagens contendo "{{ query }}"</h1>
     <h3>
       {% with results.count as total_results %}
           Found {{ total_results }} result{{ total_results|pluralize }}
@@ -12,16 +12,15 @@
     </h3>
     {% for opportunitys in results %}
         <h4><a href="{{ opportunitys.get_absolute_url }}">{{ opportunitys.title }}</a></h4>
-        {{ opportunitys.title}}
     {% empty %}
       <p>There are no results for your query.</p>
     {% endfor %}
-    <p><a href="{% url 'job:job_search' %}">Search again</a></p>
+    <p><a class="button-search-2" href="{% url 'job:job_search' %}">Retorna a Busca</a></p>
   {% else %}
-    <h1>Search for posts</h1>
+    <h1>Encontre sua vaga de emprego</h1>
     <form method="get">
       {{ form.as_p }}
-      <input class="button-search" type="submit" value="Search">
+      <input class="button-search" type="submit" value="Buscar">
     </form>
   {% endif %}
 {% endblock %}
