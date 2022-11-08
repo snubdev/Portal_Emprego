@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Opportunity, Job_Registration
-from .forms import Job_RegistraionForm, SearchForm
+from .forms import Job_RegistraionForm, SearchForm, LoginForm
 from django.contrib.postgres.search import SearchVector
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
 
 
 def opportunity_list(request, category_slug=None):
@@ -15,6 +17,7 @@ def opportunity_list(request, category_slug=None):
     return render(request, 'job/list.html', {'category': category,
                                                      'categories': categories,
                                                      'opportunitys': opportunitys})
+
 
 def opportunity_detail(request, id, slug):
     opportunity = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
@@ -52,8 +55,25 @@ def job_search(request):
                                                'results': results})
 
 
-'''def job_search(request):
-    form = SearchForm()
-    results = Opportunity.objects.annotate(search=SearchVector('title'),).filter(search='form')
-    return render(request, 'job/search.html', {'form': form,
-                                               'results': results})'''
+# views de login
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request,
+                                username=cd['username'],
+                                password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse('Authenticated successfully')
+
+                else:
+                    return HttpResponse('Disable My Job')
+            else:
+                return HttpResponse('Invalid login')
+    else:
+        form = LoginForm()
+
+    return render(request, 'job/login.html', {'form': form})
