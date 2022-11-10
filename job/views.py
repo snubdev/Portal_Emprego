@@ -4,6 +4,7 @@ from .forms import Job_RegistraionForm, SearchForm, LoginForm
 from django.contrib.postgres.search import SearchVector
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
 
 def opportunity_list(request, category_slug=None):
@@ -77,3 +78,8 @@ def user_login(request):
         form = LoginForm()
 
     return render(request, 'job/login.html', {'form': form})
+
+
+@login_required
+def teste(request):
+    return render(request, 'job/teste.html', {'section': teste})
