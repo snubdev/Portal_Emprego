@@ -19,5 +19,6 @@
             <input type="hidden" name="next" value="{{ next }}" />
             <p><input type="submit" value="Fazer login"></p>
         </form>
+        <p><a href="{% url 'job:password_reset' %}">Esqueceu sua senha?</a></p>
     </div>
 {% endblock %}
