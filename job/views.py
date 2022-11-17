@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Opportunity, Job_Registration
-from .forms import Job_RegistraionForm, SearchForm, LoginForm
+from .forms import Job_RegistraionForm, SearchForm, LoginForm, UserRegistrationForm
 from django.contrib.postgres.search import SearchVector
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -83,3 +83,19 @@ def user_login(request):
 @login_required
 def teste(request):
     return render(request, 'job/teste.html', {'section': teste})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(user_form.cleaned_data['password'])
+            new_user.save()
+            return render(request, 'job/register_done.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+
+    return render(request, 'job/register.html', {'user_form': user_form})
+
+
