@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.conf import settings
 
 
 class Category(models.Model):
@@ -86,3 +87,10 @@ class Job_Registration(models.Model):
     def __str__(self):
         return f'Application made by {self.name} for the position {self.opportunity}'
 
+
+class Job_User(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE),
+    date_of_birth = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f'Perfil do usuário {self.user.username}'

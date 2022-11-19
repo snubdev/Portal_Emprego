@@ -10,7 +10,8 @@
             Por favor, tente novamente
         </p>
     {% else %}
-        <p>Por favor, use o seguinte para fazer login</p>
+        <p>Por favor, use o seguinte para fazer login.
+        Se você não tem uma conta <a href="{% url 'job:register' %}">Criar Conta</a></p>
     {% endif %}
     <div class="login-form">
         <form action="{% url 'job:login' %}" method="post">

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Job_Registration
+from .models import Job_Registration, Job_User
 from django.contrib.auth.models import User
 
 
@@ -31,3 +31,15 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('A senha não corresponde')
         return cd['password2']
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
+
+class Job_UserEditForm(forms.ModelForm):
+    class Meta:
+        model = Job_User
+        fields = ('date_of_birth',)

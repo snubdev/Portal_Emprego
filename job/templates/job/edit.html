@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Edite seu perfil{% endblock %}
+
+{% block content %}
+    <h1>Edite seu perfil</h1>
+    <form mehtod="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ job_user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Salvar alterações"></p>
+    </form>
+{% endblock %}

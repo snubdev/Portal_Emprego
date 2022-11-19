@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Category, Opportunity, Job_Registration
-from .forms import Job_RegistraionForm, SearchForm, LoginForm, UserRegistrationForm
+from .models import Category, Opportunity, Job_Registration, Job_User
+from .forms import Job_RegistraionForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, Job_UserEditForm
 from django.contrib.postgres.search import SearchVector
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -92,6 +92,7 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
+            Job_User.objects.create(user=new_user)
             return render(request, 'job/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
@@ -99,3 +100,17 @@ def register(request):
     return render(request, 'job/register.html', {'user_form': user_form})
 
 
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        job_user_form = Job_UserEditForm(instance=request.user.job_user, data=request.POST)
+
+        if user_form.is_valid() and job_user_form.is_valid():
+            user_form.save()
+            job_user_form.save()
+    else:
+        user_form = UserEditForm(instance=request.user)
+        job_user_form = Job_UserEditForm(instance=request.user.job_user)
+
+    return render(request, 'job/edit.html', {'user_form': user_form, 'job_user_form': job_user_form})
