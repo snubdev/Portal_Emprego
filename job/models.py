@@ -88,8 +88,8 @@ class Job_Registration(models.Model):
         return f'Application made by {self.name} for the position {self.opportunity}'
 
 
-class Job_User(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE),
+class Job_Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_of_birth = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):

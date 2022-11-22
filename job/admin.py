@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Opportunity, Job_Registration, Job_User
+from .models import Category, Opportunity, Job_Registration, Job_Profile
 
 
 @admin.register(Category)
@@ -26,6 +26,6 @@ class Job_RegistrationAdmin(admin.ModelAdmin):
     search_fields = ['opportunity']
 
 
-@admin.register(Job_User)
-class Job_UserAdmin(admin.ModelAdmin):
+@admin.register(Job_Profile)
+class Job_ProfileAdmin(admin.ModelAdmin):
     list_display = ['user', 'date_of_birth']

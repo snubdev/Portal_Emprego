@@ -1,5 +1,5 @@
 from django import forms
-from .models import Job_Registration, Job_User
+from .models import Job_Registration, Job_Profile
 from django.contrib.auth.models import User
 
 
@@ -39,7 +39,7 @@ class UserEditForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 
-class Job_UserEditForm(forms.ModelForm):
+class Job_ProfileEditForm(forms.ModelForm):
     class Meta:
-        model = Job_User
+        model = Job_Profile
         fields = ('date_of_birth',)
