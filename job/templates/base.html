@@ -12,9 +12,10 @@
       <a href="{% url 'job:opportunity_list' %}" class="logo">My Job</a>
     </div>
     <div id="subheader">
-      <div class="cart">
+      <div class="menu">
         {% if request.user.is_authenticated %}
-          <p><a href="{% url 'job:job_search' %}">Achar Vagas</a></p>
+          <p><a class="menu-text" href="{% url 'job:opportunity_list' %}">Início</a></p>
+          <p><a class="menu-text" href="{% url 'job:job_search' %}">Achar Vagas</a></p>
           <p><a href="{% url 'job:logout' %}">Logout</a></p>
         {% else %}
           <p><a href="{% url 'job:login' %}">Login</a></p>

@@ -4,5 +4,7 @@
 
 {% block content %}
     <h1>My Job</h1>
-    <p>Seja bem vindo</p>
+    {% if request.user.is_authenticated %}
+        <p>Seja bem vindo {{ request.user.first_name }}</p>
+    {% endif %}
 {% endblock %}
