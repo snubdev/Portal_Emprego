@@ -141,5 +141,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'job.authentication.EmailAuthBackend'
+    'job.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2'
 ]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Segredo do Consumidor do Google

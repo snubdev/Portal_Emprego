@@ -391,3 +391,27 @@ form div.field {
 .menu-text {
     margin-right: 20px
 }
+
+/* social-auth */
+.social {
+    float:right;
+}
+.social{
+    top: -130px;
+    position: relative;
+
+}
+.social li {
+    list-style:none;
+    padding:10px 20px;
+}
+.social li a {
+    width:100%;
+    height:100%;
+    display:block;
+    color:#fff;
+}
+
+.social li.google {
+    background:#de1710;
+}
