@@ -415,3 +415,9 @@ form div.field {
 .social li.google {
     background:#de1710;
 }
+
+tags {
+    position: relative;
+    top: -8px;
+    font-size: 14px;
+}

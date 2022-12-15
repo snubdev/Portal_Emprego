@@ -32,6 +32,9 @@ urlpatterns = [
     path('<slug:category_slug>/', views.opportunity_list, name='opportunity_list_by_category'),
     path('<int:id>/<slug:slug>/', views.opportunity_detail, name='opportunity_detail'),
 
+    path('tag/<slug:tag_slug>/', views.opportunity_list, name='opportunity_list_by_tag'),
+
+
 
 
 

@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.conf import settings
+from taggit.managers import TaggableManager
 
 
 class Category(models.Model):
@@ -60,6 +61,8 @@ class Opportunity(models.Model):
 
     objects = models.Manager()
     published = PublishedManager()
+
+    tags = TaggableManager()
 
     class Meta:
         ordering = ('-activated',)

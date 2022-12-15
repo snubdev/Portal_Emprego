@@ -29,6 +29,14 @@
         <a href="{{ opportunity.get_absolute_url }}">{{ opportunity.name }}</a>
         <br>
         {{ opportunity.title }}
+        <p class="tags">
+          {% for tag in opportunity.tags.all %}
+            <a href="{% url 'job:opportunity_list_by_tag' tag.slug %}">
+              {{ tag.name }}
+            </a>
+            {% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
       </div>
     {% endfor %}
   </div>

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'social_django',
     'django_extensions',
+    'taggit',
 
 ]
 
@@ -145,5 +146,6 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2'
 ]
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # Google Consumer Key
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Segredo do Consumidor do Google
+#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # Google Consumer Key
+#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Segredo do Consumidor do Google
+

@@ -5,19 +5,28 @@ from django.contrib.postgres.search import SearchVector
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from taggit.models import Tag
 
 
-def opportunity_list(request, category_slug=None):
+def opportunity_list(request, category_slug=None, tag_slug=None):
     category = None
     categories = Category.objects.all()
     opportunitys = Opportunity.objects.filter(status='activated')
+
+    object_list = Opportunity.objects.all()
+    tag = None
+
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = object_list.filter(tags__in=[tag])
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         opportunitys = opportunitys.filter(category=category)
     return render(request, 'job/list.html', {'category': category,
                                                      'categories': categories,
-                                                     'opportunitys': opportunitys})
+                                                     'opportunitys': opportunitys,
+                                                     'tag': tag})
 
 
 def opportunity_detail(request, id, slug):
