@@ -6,19 +6,18 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from taggit.models import Tag
-
+from django.db.models import Count
 
 def opportunity_list(request, category_slug=None, tag_slug=None):
     category = None
     categories = Category.objects.all()
     opportunitys = Opportunity.objects.filter(status='activated')
 
-    object_list = Opportunity.objects.all()
     tag = None
 
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        object_list = object_list.filter(tags__in=[tag])
+        opportunitys = opportunitys.filter(tags__in=[tag])
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -32,8 +31,14 @@ def opportunity_list(request, category_slug=None, tag_slug=None):
 def opportunity_detail(request, id, slug):
     opportunity = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
 
+    # Registro de úsuario
     job_registrations = opportunity.job_registrations.filter(active=True)
     new_registraion = None
+
+    # Postagem semelhantes
+    job_tags_ids = opportunity.tags.values_list('id', flat=True)
+    similar_opportunity = Opportunity.published.filter(tags__in=job_tags_ids).exclude(id=opportunity.id)
+    similar_opportunity = similar_opportunity.annotate(same_tags=Count('tags')).order_by('-same_tags', '-activated')[:4]
 
     if request.method == 'POST':
         registraion_form = Job_RegistraionForm(request.POST, request.FILES)
@@ -47,7 +52,8 @@ def opportunity_detail(request, id, slug):
     return render(request, 'job/detail.html', {'job_registrations': job_registrations,
                                                'opportunity': opportunity,
                                                'new_registraion': new_registraion,
-                                               'registraion_form': registraion_form})
+                                               'registraion_form': registraion_form,
+                                               'similar_opportunity': similar_opportunity})
 
 
 def job_search(request):

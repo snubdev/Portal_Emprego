@@ -43,6 +43,16 @@
             </form>
         {% endif %}
     </div>
+    <div>
+        <h2>Vagas Similares</h2>
+        {% for opportunity in similar_opportunity %}
+            <p>
+                <a href="{{ opportunity.get_absolute_url }}">{{ opportunity.title }}</a>
+            </p>
+        {% empty %}
+            Não existe vagas semelhantes
+        {% endfor %}
+    </div>
 
 
 

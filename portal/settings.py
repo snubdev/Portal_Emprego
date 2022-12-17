@@ -83,11 +83,16 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        #'NAME': '',
+        #'USER': '',
+        #'PASSWORD': '',
+        #'HOST': 'localhost',
+        #'PORT': ''
+        'NAME': 'postgres',
+        'USER': 'job',
+        'PASSWORD': '123',
         'HOST': 'localhost',
-        'PORT': ''
+        'PORT': '5432'
     }
 }
 
@@ -148,4 +153,7 @@ AUTHENTICATION_BACKENDS = [
 
 #SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # Google Consumer Key
 #SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Segredo do Consumidor do Google
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '45025963503-uhjc9l9frlhbq62bkerlp8ia7871m5r4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
