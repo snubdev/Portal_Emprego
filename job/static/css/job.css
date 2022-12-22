@@ -421,3 +421,9 @@ tags {
     top: -8px;
     font-size: 14px;
 }
+
+similar {
+    position: relative;
+    top: -50px;
+    left: 50px;
+}

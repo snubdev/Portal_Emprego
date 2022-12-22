@@ -36,9 +36,9 @@ def opportunity_detail(request, id, slug):
     new_registraion = None
 
     # Postagem semelhantes
-    job_tags_ids = opportunity.tags.values_list('id', flat=True)
-    similar_opportunity = Opportunity.published.filter(tags__in=job_tags_ids).exclude(id=opportunity.id)
-    similar_opportunity = similar_opportunity.annotate(same_tags=Count('tags')).order_by('-same_tags', '-activated')[:4]
+    opportunity_tags_ids = opportunity.tags.values_list('id', flat=True)
+    similar_opportunity = Opportunity.activated.filter(tags__in=opportunity_tags_ids).exclude(id=opportunity.id)
+    similar_opportunity = similar_opportunity.annotate(same_tags=Count('tags')).order_by('-same_tags', '-activate')[:4]
 
     if request.method == 'POST':
         registraion_form = Job_RegistraionForm(request.POST, request.FILES)

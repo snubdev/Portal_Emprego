@@ -27,12 +27,12 @@ urlpatterns = [
     # urls para editar perfil do usuário
     path('edit/', views.edit, name='edit'),
 
-    path('list/', views.opportunity_list, name='opportunity_list'),
+    path('list', views.opportunity_list, name='opportunity_list'),
     path('search/', views.job_search, name='job_search'),
     path('<slug:category_slug>/', views.opportunity_list, name='opportunity_list_by_category'),
     path('<int:id>/<slug:slug>/', views.opportunity_detail, name='opportunity_detail'),
-
     path('tag/<slug:tag_slug>/', views.opportunity_list, name='opportunity_list_by_tag'),
+
 
 
 

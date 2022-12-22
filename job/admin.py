@@ -11,12 +11,12 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
     list_display = ['category', 'title', 'slug', 'author',
-                    'image', 'wage', 'description', 'activated',
+                    'image', 'wage', 'description', 'activate',
                     'create', 'update', 'status', 'hr']
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
-    date_hierarchy = 'activated'
-    ordering = ['status', 'activated']
+    date_hierarchy = 'activate'
+    ordering = ['status', 'activate']
 
 
 @admin.register(Job_Registration)

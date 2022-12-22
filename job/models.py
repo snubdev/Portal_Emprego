@@ -22,9 +22,9 @@ class Category(models.Model):
         return reverse('job:opportunity_list_by_category', args=[self.slug])
 
 
-class PublishedManager(models.Manager):
+class ActivatedManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager, self).get_queryset().filter(status='published')
+        return super(ActivatedManager, self).get_queryset().filter(status='activated')
 
 
 n = 0
@@ -47,12 +47,12 @@ class Opportunity(models.Model):
 
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
-    slug = models.CharField(max_length=250, unique_for_date='activated')
+    slug = models.CharField(max_length=250, unique_for_date='activate')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_opportunity')
     image = models.ImageField(upload_to=f'{n+1} - opportunity/%Y/%m/%d', blank=True)
     wage = models.CharField(max_length=10)
     description = models.TextField(blank=True)
-    activated = models.DateTimeField(default=timezone.now)
+    activate = models.DateTimeField(default=timezone.now)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='disable')
@@ -60,12 +60,12 @@ class Opportunity(models.Model):
     benefits = models.TextField(blank=True)
 
     objects = models.Manager()
-    published = PublishedManager()
+    activated = ActivatedManager()
 
     tags = TaggableManager()
 
     class Meta:
-        ordering = ('-activated',)
+        ordering = ('-activate',)
 
     def __str__(self):
         return self.title

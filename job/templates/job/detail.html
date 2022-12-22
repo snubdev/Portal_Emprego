@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
+{% load job_tags %}
+
 {% block content %}
     <p class="date">
-        Published {{ opportunity.activated }} by {{ opportunity.author }}
+        Published {{ opportunity.activate }} by {{ opportunity.author }}
     </p>
 
     <p class="total_job_registrations">
@@ -10,12 +12,12 @@
             Mais de {{ total_job_registrations }} candidatura{{ total_job_registrations|pluralize }}
         {% endwith %}
     </p>
-    <h1>{{ opportunity.title }}</h1>
-    <p class="tags">Tags: {{ opportunity.tags.all|join:", "}}</p>
+    <h1>{{ opportunity.title}}</h1>
+    <p class="tags">{{ opportunity.tags.all|join:", "}}</p>
     <div class="opportunity">
         <h3>Descrição</h3>
         <div class="descrição">
-            {{ opportunity.description|linebreaks }}
+            {{ opportunity.description|markdown }}
         </div>
 
         <h3>Salario</h3>
@@ -26,7 +28,7 @@
 
         <h3>Beneficios</h3>
 
-        {{ opportunity.benefits}}
+        {{ opportunity.benefits|markdown}}
     </div>
 
     <div id="subheader-2"></div>
@@ -43,7 +45,7 @@
             </form>
         {% endif %}
     </div>
-    <div>
+    <div class="similar">
         <h2>Vagas Similares</h2>
         {% for opportunity in similar_opportunity %}
             <p>
