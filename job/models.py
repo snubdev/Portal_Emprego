@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -79,7 +80,7 @@ class Job_Registration(models.Model):
     name = models.CharField(max_length=250)
     email = models.EmailField(max_length=250)
     phone = models.CharField(max_length=11)
-    curriculum = models.FileField(upload_to='pdfs/')
+    curriculum = models.FileField(upload_to='pdfs/', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)

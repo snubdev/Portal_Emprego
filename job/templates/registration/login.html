@@ -19,14 +19,14 @@
             <input type="hidden" name="next" value="{{ next }}" />
             <p><input type="submit" value="Fazer login"></p>
         </form>
+        <div class="social">
+            <ul>
+                <li class="google">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+                </li>
+            </ul>
+        </div>
         <p><a class="text-6" href="{% url 'job:password_reset' %}">Esqueceu sua senha?</a></p>
     </div>
-    <div class="social">
-        <ul>
-            <li class="google">
-                <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
-            </li>
-        </ul>
 
-    </div>
 {% endblock %}
