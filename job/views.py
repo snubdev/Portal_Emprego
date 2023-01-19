@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Opportunity, Job_Registration, Job_Profile
 from .forms import Job_RegistraionForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, Job_ProfileEditForm
 from django.contrib.postgres.search import SearchVector
@@ -42,6 +42,18 @@ def opportunity_detail(request, id, slug):
 
     if request.method == 'POST':
         registraion_form = Job_RegistraionForm(request.POST, request.FILES)
+
+        form = Job_RegistraionForm(request.POST)
+
+        nome = form.data['name']
+        oportunidade = form.data['opportunity']
+        nomes = Job_Registration.objects.filter(name=nome)
+        oportunidades = Job_RegistraionForm.objects.filter(opportunity=oportunidade)
+
+
+        if len(nomes) > 0 and len(oportunidades) > 0:
+            return redirect('/?status=1')
+
         if registraion_form.is_valid():
             new_registraion = registraion_form.save(commit=False)
             new_registraion.opportunity = opportunity

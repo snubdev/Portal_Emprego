@@ -9,14 +9,6 @@ class Job_RegistraionForm(forms.ModelForm):
         model = Job_Registration
         fields = ('name', 'email', 'phone', 'curriculum')
 
-    '''def clean_curriculum(self):
-        c = self.cleaned_data['curriculum']
-        if c != f'{c}.pdf':
-            raise forms.ValidationError('Esse formato de aquivo não pode ser enviado')
-        else:
-            return c'''
-
-
 
 class SearchForm(forms.Form):
     query = forms.CharField()
