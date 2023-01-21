@@ -46,13 +46,11 @@ def opportunity_detail(request, id, slug):
         form = Job_RegistraionForm(request.POST)
 
         nome = form.data['name']
-        oportunidade = form.data['opportunity']
         nomes = Job_Registration.objects.filter(name=nome)
-        oportunidades = Job_RegistraionForm.objects.filter(opportunity=oportunidade)
 
 
-        if len(nomes) > 0 and len(oportunidades) > 0:
-            return redirect('/?status=1')
+        if len(nomes) > 0:
+            registraion_form = Job_RegistraionForm()
 
         if registraion_form.is_valid():
             new_registraion = registraion_form.save(commit=False)
