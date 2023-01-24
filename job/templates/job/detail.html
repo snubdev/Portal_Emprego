@@ -4,7 +4,7 @@
 
 {% block content %}
     <p class="date">
-        Published {{ opportunity.activate }} by {{ opportunity.author }}
+        Publicado em {{ opportunity.activate }} by {{ opportunity.author }}
     </p>
 
     <p class="total_job_registrations">
@@ -32,28 +32,33 @@
     </div>
 
     <div id="subheader-2"></div>
-
-    <div class="job_registrations">
-        {% if new_registraion %}
-            <h2>Cadastro concluido com sucesso.</h2>
-        {% else %}
-            <h2>Quero me candidatar</h2>
-            <form method="post" enctype ="multipart/form-data">
-                {{ registraion_form.as_p }}
-                {% csrf_token %}
-                <p><input type="submit" value="Cradastre-se"></p>
-            </form>
-        {% endif %}
-    </div>
-    <div class="similar">
-        <h2>Vagas Similares</h2>
-        {% for opportunity in similar_opportunity %}
-            <p>
-                <a href="{{ opportunity.get_absolute_url }}">{{ opportunity.title }}</a>
-            </p>
-        {% empty %}
-            Não existe vagas semelhantes
-        {% endfor %}
-    </div>
+    {% if request.user.is_authenticated %}
+        <div class="job_registrations">
+            {% if new_registraion and cont == 0 %}
+                <h2>Cadastro concluido com sucesso.</h2>
+            {% elif cont == 1%}
+                <h2>O usuário já possui cadastrado na vaga {{ opportunity.title}}</h2>
+            {% else %}
+                <h2>Quero me candidatar</h2>
+                <form method="post" enctype ="multipart/form-data">
+                    {{ registraion_form.as_p }}
+                    {% csrf_token %}
+                    <p><input type="submit" value="Cradastre-se"></p>
+                </form>
+            {% endif %}
+        </div>
+        <div class="similar">
+            <h2>Vagas Similares</h2>
+            {% for opportunity in similar_opportunity %}
+                <p>
+                    <a href="{{ opportunity.get_absolute_url }}">{{ opportunity.title }}</a>
+                </p>
+            {% empty %}
+                Não existe vagas semelhantes
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Faça <a href="{% url 'job:login' %}">Login</a> para se cadastra na vaga</p>
+    {% endif %}
 
 {% endblock %}

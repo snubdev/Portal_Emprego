@@ -34,6 +34,7 @@ def opportunity_detail(request, id, slug):
     # Registro de úsuario
     job_registrations = opportunity.job_registrations.filter(active=True)
     new_registraion = None
+    cont = None
 
     # Postagem semelhantes
     opportunity_tags_ids = opportunity.tags.values_list('id', flat=True)
@@ -49,13 +50,18 @@ def opportunity_detail(request, id, slug):
         nomes = Job_Registration.objects.filter(name=nome)
 
 
-        if len(nomes) > 0:
-            registraion_form = Job_RegistraionForm()
+        '''if len(nomes) > 0:
+            registraion_form = Job_RegistraionForm()'''
 
         if registraion_form.is_valid():
             new_registraion = registraion_form.save(commit=False)
             new_registraion.opportunity = opportunity
-            new_registraion.save()
+            oportunidade = Job_Registration.objects.filter(opportunity=new_registraion.opportunity)
+            if len(nomes) > 0 and len(oportunidade) > 0:
+                cont = 1
+            else:
+                new_registraion.save()
+                cont = 0
     else:
         registraion_form = Job_RegistraionForm()
 
@@ -63,7 +69,8 @@ def opportunity_detail(request, id, slug):
                                                'opportunity': opportunity,
                                                'new_registraion': new_registraion,
                                                'registraion_form': registraion_form,
-                                               'similar_opportunity': similar_opportunity})
+                                               'similar_opportunity': similar_opportunity,
+                                               'cont': cont})
 
 
 def job_search(request):
