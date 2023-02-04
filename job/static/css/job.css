@@ -432,3 +432,75 @@ similar {
     margin-left: 50%;
 }
 
+.menu {
+    display: inline;
+}
+
+.menu ul li{
+    display: inline;
+}
+
+.dp-menu ul li p a{
+    text-decoration: none;
+    display: inline-block;
+}
+
+.menu ul ul{
+    display: none;
+    left: 2;
+    position: absolute;
+}
+
+.menu ul li:hover ul{
+    display: block;
+    background: #ececec;
+}
+
+.menu ul ul{
+    width: 150px;
+    height: 150px;
+}
+
+.menu ul ul li a{
+    display: block;
+    position: relative;
+    left: 20px;
+}
+
+.menu-text-sub {
+    margin-top: 10px;
+}
+
+
+
+.compartilha ul li{
+    display: inline;
+}
+
+.compartilha ul li {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.compartilha ul ul{
+    display: none;
+    position: absolute;
+}
+
+.compartilha ul li:hover ul{
+    display: block;
+}
+
+
+.compartilha ul ul li{
+    display: block;
+    position: relative;
+    left: -40px;
+    top: 5px;
+
+}
+
+.compartilha-text li{
+    margin-top: 10px;
+}
+

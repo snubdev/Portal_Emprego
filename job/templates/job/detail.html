@@ -33,9 +33,17 @@
         {{ opportunity.benefits|markdown}}
     </div>
 
-    {% post_to_facebook object_or_url %}
-    {% post_to_linkedin object_or_url %}
-    {% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+    <div class="compartilha">
+        <ul>
+            <li><a href="#">Compartilhar</a>
+                <ul>
+                    <li>{% post_to_facebook object_or_url %}</li>
+                    <li>{% post_to_whatsapp object_or_url "Share via WhatsApp" %}</li>
+                    <li>{% post_to_linkedin object_or_url %}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
     <div id="subheader-2"></div>
     {% if request.user.is_authenticated %}

@@ -14,9 +14,17 @@
     <div id="subheader">
       <div class="menu">
         {% if request.user.is_authenticated %}
-          <p><a class="menu-text" href="{% url 'job:opportunity_list' %}">Início</a></p>
-          <p><a class="menu-text" href="{% url 'job:job_search' %}">Achar Vagas</a></p>
-          <p><a href="{% url 'job:logout' %}">Logout</a></p>
+          <ul>
+            <li><a class="menu-text" href="{% url 'job:opportunity_list' %}">Início</a></li>
+            <li><a class="menu-text" href="#">Menu</a>
+              <ul>
+                <li><a class="menu-text-sub" href="{% url 'job:job_search' %}">Achar Vagas</a></li>
+                <li><a class="menu-text-sub" href="{% url 'job:edit' %}">Edição</a></li>
+                <li><a class="menu-text-sub" href="{% url 'job:job_search' %}">Achar Vagas</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'job:logout' %}">Logout</a></li>
+          </ul>
         {% else %}
           <p><a href="{% url 'job:login' %}">Login</a></p>
         {% endif %}

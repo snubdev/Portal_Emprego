@@ -137,12 +137,11 @@ def edit(request):
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         job_user_form = Job_ProfileEditForm(instance=request.user.job_user, data=request.POST)
-
         if user_form.is_valid() and job_user_form.is_valid():
             user_form.save()
             job_user_form.save()
     else:
         user_form = UserEditForm(instance=request.user)
-        job_user_form = Job_ProfileEditForm(instance=request.user.job_user)
+        job_user_form = Job_ProfileEditForm(instance=request.user)
 
     return render(request, 'job/edit.html', {'user_form': user_form, 'job_user_form': job_user_form})
