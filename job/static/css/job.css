@@ -128,6 +128,7 @@ ul.errorlist {
     padding:1px 100px;
     overflow:auto;
     border-radius: 110px;
+    width: auto;
 }
 
 #header .logo {
@@ -201,7 +202,8 @@ ul.errorlist {
     height: 200px;
     margin-bottom:8px;
     border-style: groove;
-    border-color: #4f5252;
+    border-color: #0197ff;
+    border-radius: 20px;
 }
 
 .product-detail {
@@ -425,11 +427,13 @@ tags {
     color: dodgerblue;
 }
 
-similar {
+.similar {
+    padding: 0;
+    margin: 0;
+    /* width: 600px; */
     position: relative;
+    left: 10%;
     top: -50px;
-    left: 50px;
-    margin-left: 50%;
 }
 
 .menu {
@@ -457,27 +461,31 @@ similar {
 }
 
 .menu ul ul{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
 }
 
 .menu ul ul li a{
     display: block;
     position: relative;
-    left: 20px;
+    padding: 2px;
+    top: 3px;
 }
 
 .menu-text-sub {
     margin-top: 10px;
 }
 
-
+.compartilha ul {
+    padding: 0;
+}
 
 .compartilha ul li{
     display: inline;
 }
 
-.compartilha ul li {
+.compartilha ul li p a{
     text-decoration: none;
     display: inline-block;
 }
@@ -485,18 +493,19 @@ similar {
 .compartilha ul ul{
     display: none;
     position: absolute;
+    border-radius: 10px;
 }
 
 .compartilha ul li:hover ul{
     display: block;
+    background: #ececec;
 }
 
 
-.compartilha ul ul li{
+.compartilha ul ul li a{
     display: block;
     position: relative;
-    left: -40px;
-    top: 5px;
+    padding: 10px;
 
 }
 
