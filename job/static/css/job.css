@@ -282,15 +282,12 @@ form div.field {
     border-radius:4px;
 }
 
-.descrição p {
-    border-radius: 1px;
+/* .descrição ul {
     border: 2px solid;
-    width: 500px;
     border-color: #ececec;
     border-style: double;
-    border-radius: 10px;
     padding: 10px;
-}
+} */
 
 .opportunity {
     padding-left: 10px;
@@ -379,9 +376,8 @@ tags {
 .similar {
     padding: 0;
     margin: 0;
-    /* width: 600px; */
     position: relative;
-    left: 10%;
+    left: 600px;
     top: -50px;
 }
 
@@ -411,7 +407,7 @@ tags {
 
 .menu ul ul{
     width: 120px;
-    height: 120px;
+    height: 140px;
     border-radius: 30px;
 }
 
@@ -462,3 +458,16 @@ tags {
     margin-top: 10px;
 }
 
+.reset ul {
+    position: fixed;
+    left: 400px;
+    top: 315px;
+    margin: 0;
+    list-style-type: none;
+    color: #ff0101;
+}
+
+.button-confirm {
+    position: relative;
+    left: 8px;
+}
