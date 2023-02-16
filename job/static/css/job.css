@@ -1,9 +1,14 @@
 @import url(//fonts.googleapis.com/css?family=Ubuntu);
 
+html {
+    height: 100%;
+}
 body {
     margin:0;
     padding:0;
     font-family:helvetica, sans-serif;
+    width: 100%;
+    height: auto;
 }
 
 h1, h2, h3, h4, h5 , h6 {
@@ -183,14 +188,14 @@ ul.errorlist {
 }
 
 #main {
-    float:left;
-    width: 96%;
+    /* float:left; */
+    /* width: 96%; */
     margin-right:-220px;
     overflow:hidden;
 }
 
 .product-list .item {
-    width:25%;
+    width: 30%;
     padding:10px 20px 10px 0;
     float:left;
     text-align:center;
@@ -377,7 +382,7 @@ tags {
     padding: 0;
     margin: 0;
     position: relative;
-    left: 600px;
+    left: 300px;
     top: -50px;
 }
 
@@ -470,4 +475,14 @@ tags {
 .button-confirm {
     position: relative;
     left: 8px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #0197ff;
+  color: white;
+  text-align: center;
 }
