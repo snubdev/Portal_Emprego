@@ -95,6 +95,7 @@ class Job_Registration(models.Model):
 class Job_Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_of_birth = models.DateTimeField(blank=True, null=True)
+    favorites_opportunitys = models.ManyToManyField(Opportunity, blank=True, related_name='favorites_opportunitys')
 
     def __str__(self):
         return f'Perfil do usuário {self.user.username}'

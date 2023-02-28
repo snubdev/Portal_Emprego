@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from _ast import arguments
+
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from .models import Category, Opportunity, Job_Registration, Job_Profile
 from .forms import Job_RegistraionForm, SearchForm, LoginForm, UserRegistrationForm, UserEditForm, Job_ProfileEditForm
 from django.contrib.postgres.search import SearchVector
@@ -30,6 +32,8 @@ def opportunity_list(request, category_slug=None, tag_slug=None):
 
 def opportunity_detail(request, id, slug):
     opportunity = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
+    opportunity_add = get_object_or_404(Opportunity, id=id)
+
 
     # Registro de úsuario
     job_registrations = opportunity.job_registrations.filter(active=True)
@@ -47,6 +51,7 @@ def opportunity_detail(request, id, slug):
         form = Job_RegistraionForm(request.POST)
 
         nome = form.data['name']
+        print(nome)
         nomes = Job_Registration.objects.filter(name=nome)
 
 
@@ -70,7 +75,7 @@ def opportunity_detail(request, id, slug):
                                                'new_registraion': new_registraion,
                                                'registraion_form': registraion_form,
                                                'similar_opportunity': similar_opportunity,
-                                               'cont': cont})
+                                               'cont': cont, 'opportunity_add':opportunity_add},)
 
 
 def job_search(request):
@@ -145,3 +150,24 @@ def edit(request):
         job_user_form = Job_ProfileEditForm(instance=request.user)
 
     return render(request, 'job/edit.html', {'user_form': user_form, 'job_user_form': job_user_form})
+
+@login_required
+def	favorite_job(request, id):
+    opportunity_add = get_object_or_404(Opportunity, id=id)
+    if opportunity_add.favorites_opportunitys.filter(id=request.user.id).exists():
+        opportunity_add.favorites_opportunitys.remove(request.user)
+    else:
+        opportunity_add.favorites_opportunitys.add(request.user)
+        print(opportunity_add)
+        opportunity_add.save()
+    return HttpResponseRedirect(request.META['Teste'])
+
+'''def	favorite_job(request, id, slug):
+    opportunity_add = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
+    profile = Job_Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        profile.favorites_opportunitys.add(opportunity_add.user)
+        print(opportunity_add)
+        profile.save()
+    return render(request, 'job/%s' % id)'''
+

@@ -44,6 +44,12 @@
         </ul>
     </div>
 
+    {% if request.user.is_authenticated %}
+    <div>
+        <a href="{% url 'job:favorite_job' opportunity_add.id %}">Add favoritos</a>
+    </div>
+    {% endif %}
+
     <div id="subheader-2"></div>
     {% if request.user.is_authenticated %}
         <div class="job_registrations">
