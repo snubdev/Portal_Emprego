@@ -46,7 +46,7 @@
 
     {% if request.user.is_authenticated %}
     <div>
-        <a href="{% url 'job:favorite_job' opportunity_add.id %}">Add favoritos</a>
+        <a href="{% url 'job:favorite_add' opportunity_add.id %}">Add favoritos</a>
     </div>
     {% endif %}
 

@@ -152,15 +152,14 @@ def edit(request):
     return render(request, 'job/edit.html', {'user_form': user_form, 'job_user_form': job_user_form})
 
 @login_required
-def	favorite_job(request, id):
+def	favorite_add(request, id):
     opportunity_add = get_object_or_404(Opportunity, id=id)
-    if opportunity_add.favorites_opportunitys.filter(id=request.user.id).exists():
-        opportunity_add.favorites_opportunitys.remove(request.user)
+    if opportunity_add.favorites.filter(id=request.user.id).exists():
+        opportunity_add.favorites.remove(request.user)
     else:
-        opportunity_add.favorites_opportunitys.add(request.user)
+        opportunity_add.favorites.add(request.user)
         print(opportunity_add)
-        opportunity_add.save()
-    return HttpResponseRedirect(request.META['Teste'])
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 '''def	favorite_job(request, id, slug):
     opportunity_add = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
