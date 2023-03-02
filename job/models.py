@@ -32,6 +32,7 @@ n = 0
 
 
 class Opportunity(models.Model):
+
     STATUS_CHOICES = (
         ('disable', 'Disabled'),
         ('activated', 'Activated')

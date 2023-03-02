@@ -119,7 +119,8 @@ def user_login(request):
 
 @login_required
 def teste(request):
-    return render(request, 'job/teste.html', {'section': teste})
+    new = Opportunity.objects.filter(favorites=request.user.id)
+    return render(request, 'job/teste.html', {'section': teste, 'new': new})
 
 
 def register(request):
@@ -155,18 +156,13 @@ def edit(request):
 def	favorite_add(request, id):
     opportunity_add = get_object_or_404(Opportunity, id=id)
     if opportunity_add.favorites.filter(id=request.user.id).exists():
+        print(opportunity_add)
         opportunity_add.favorites.remove(request.user)
+        print('remove')
     else:
         opportunity_add.favorites.add(request.user)
-        print(opportunity_add)
+        print(opportunity_add, 'salvo')
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-'''def	favorite_job(request, id, slug):
-    opportunity_add = get_object_or_404(Opportunity, id=id, slug=slug, status='activated')
-    profile = Job_Profile.objects.filter(user=request.user).first()
-    if request.method == 'POST':
-        profile.favorites_opportunitys.add(opportunity_add.user)
-        print(opportunity_add)
-        profile.save()
-    return render(request, 'job/%s' % id)'''
+
 

@@ -7,4 +7,19 @@
     {% if request.user.is_authenticated %}
         <p>Seja bem vindo {{ request.user.first_name }}</p>
     {% endif %}
+
+    <div>
+        <h2>Favoritos</h2>
+        {% for favorites_opportunity in new %}
+            <a href="{{ favorites_opportunity.get_absolute_url }}">
+                <img class=fav-image src="{{favorites_opportunity.image.url}}" alt="{{ favorites_opportunity.title }}">
+            </a>
+            <p>
+                <a href="{{ favorites_opportunity.get_absolute_url }}">{{ favorites_opportunity.title }}</a>
+            </p>
+        {% empty %}
+            Vazio
+        {% endfor %}
+    </div>
+
 {% endblock %}
