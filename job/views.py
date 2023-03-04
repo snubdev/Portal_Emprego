@@ -119,8 +119,7 @@ def user_login(request):
 
 @login_required
 def teste(request):
-    new = Opportunity.objects.filter(favorites=request.user.id)
-    return render(request, 'job/teste.html', {'section': teste, 'new': new})
+    return render(request, 'job/teste.html', {'section': teste})
 
 
 def register(request):
@@ -153,6 +152,11 @@ def edit(request):
     return render(request, 'job/edit.html', {'user_form': user_form, 'job_user_form': job_user_form})
 
 @login_required
+def favorite_teste(request):
+    fav = Opportunity.objects.filter(favorites=request.user.id)
+    return render(request, 'job/favorites.html', {'fav': fav})
+
+@login_required
 def	favorite_add(request, id):
     opportunity_add = get_object_or_404(Opportunity, id=id)
     if opportunity_add.favorites.filter(id=request.user.id).exists():
@@ -163,6 +167,4 @@ def	favorite_add(request, id):
         opportunity_add.favorites.add(request.user)
         print(opportunity_add, 'salvo')
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-
 

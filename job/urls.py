@@ -11,6 +11,8 @@ urlpatterns = [
 
     path('', views.teste, name='teste'),
 
+    path('fav', views.favorite_teste, name='fav'),
+
     # urls para alteração de senha
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
@@ -33,6 +35,7 @@ urlpatterns = [
     path('<int:id>/<slug:slug>/', views.opportunity_detail, name='opportunity_detail'),
     path('tag/<slug:tag_slug>/', views.opportunity_list, name='opportunity_list_by_tag'),
     path('favorite/<int:id>/', views.favorite_add, name='favorite_add'),
+
 
 
 

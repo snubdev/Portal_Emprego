@@ -19,7 +19,9 @@
   {% else %}
     <h1>Encontre sua vaga de emprego</h1>
     <form method="get">
-      {{ form.as_p }}
+      <div class="query">
+        {{ form.as_p }}
+      </div>
       <input class="button-search" type="submit" value="Buscar">
     </form>
   {% endif %}
