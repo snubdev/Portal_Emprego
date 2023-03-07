@@ -317,9 +317,8 @@ form div.field {
 }
 
 .button-search {
-    position: relative;
-    top: 19px;
-    left: 6px;
+   position: initial;
+   margin-left: 10px;
 }
 
 .button-search-2 {
@@ -382,8 +381,8 @@ tags {
     padding: 0;
     margin: 0;
     position: relative;
-    left: 300px;
-    top: -50px;
+    left: 50%;
+    bottom: 50px;
 }
 
 .menu {
@@ -505,4 +504,10 @@ footer {
 
 .query label {
     display: none;
+}
+
+.favorito {
+    left: 50px;
+    position: relative;
+    bottom: 50px;
 }
