@@ -465,13 +465,13 @@ tags {
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #0197ff;
-  color: white;
-  text-align: center;
+    position: fixed;
+    left: 40%;
+    bottom: 0;
+    width: 30%;
+    /* background-color: #0197ff; */
+    color: #999999;
+    text-align: center;
 }
 
 .fav-image {
@@ -519,3 +519,5 @@ footer {
     position: relative;
 
 }
+
+

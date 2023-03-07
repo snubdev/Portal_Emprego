@@ -31,12 +31,18 @@
         {% endif %}
       </div>
     </div>
-    <div id="content">
-      {% block content %}
-      {% endblock %}
-    </div>
+
+    <section>
+      <div id="content">
+        <article>
+          {% block content %}
+          {% endblock %}
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p> © Desenvolvido por Maicon Leandro.</p>
+    </footer>
   </body>
-  <footer>
-    <p>Desenvolvido por Maicon Leandro</p>
-  </footer>
 </html>
