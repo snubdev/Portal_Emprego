@@ -33,51 +33,66 @@
         {{ opportunity.benefits|markdown}}
     </div>
 
-    <div class="compartilha">
-        <ul>
-            <li><a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAByklEQVR4nO2Xv0ocURTGzxGCjSBYqcEupZ3kDQIqpkj6ND6AVmohmAS0iZ04c45LilTJKwjKCpIHSJHWzsJyXbUQTPyFe3fUWf9kd2VnRPTAhWHunft999zzfZwReY6iwnirTlWNE3WOw7OkTEkZocaKOtwxlss4OeqcijMnFYbicObCuzBXaCbU2YkgAfx6OAsZuWqRBI4jgYTBG5MJg5GAcVQcAeMoEghpvx7OyywD9e6igooxrsbWRbGJMV/8FazRKynT6vy+rPKG7BpFGEisMxxHA7yNIrScfo1DdbbD6ZrWfGVAjEV1DnLA+xGwQr84n+8lQ/2PfsX5KAmv1Elypwzjl6R8kAovmjbbYCKQV6fWnhFZa/2q8zc77bkam2K8kZL1e6bGNzFGuwb82PRbK46AU22pX+OPOt/FGOs+g5SpVvqNNXAlu11JeSef6OkaB3WWb5WhcS7GkqSMqLOaSetibk82mJGEvqbNjMkow4aXdNAPpDET1eyjWrDXG0YUwIzZAJ4jGtZ+CSTvbUQdR0i/816NnzmAs4fpB1Jeq/EjK9QH7QfqT7Af6NRPirwCacNPCm/P9S4/KaUtv91Pyv0xeY5HFf8A6HNzgOCBMhQAAAAASUVORK5CYII="></a>
+    <ul class="share-fav">
+        <li class="share-fav-buttom-1">
+            <div class="compartilha">
                 <ul>
-                    <li>{% post_to_facebook object_or_url %}</li>
-                    <li>{% post_to_whatsapp object_or_url %} </li>
+                    <li><a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAByklEQVR4nO2Xv0ocURTGzxGCjSBYqcEupZ3kDQIqpkj6ND6AVmohmAS0iZ04c45LilTJKwjKCpIHSJHWzsJyXbUQTPyFe3fUWf9kd2VnRPTAhWHunft999zzfZwReY6iwnirTlWNE3WOw7OkTEkZocaKOtwxlss4OeqcijMnFYbicObCuzBXaCbU2YkgAfx6OAsZuWqRBI4jgYTBG5MJg5GAcVQcAeMoEghpvx7OyywD9e6igooxrsbWRbGJMV/8FazRKynT6vy+rPKG7BpFGEisMxxHA7yNIrScfo1DdbbD6ZrWfGVAjEV1DnLA+xGwQr84n+8lQ/2PfsX5KAmv1Elypwzjl6R8kAovmjbbYCKQV6fWnhFZa/2q8zc77bkam2K8kZL1e6bGNzFGuwb82PRbK46AU22pX+OPOt/FGOs+g5SpVvqNNXAlu11JeSef6OkaB3WWb5WhcS7GkqSMqLOaSetibk82mJGEvqbNjMkow4aXdNAPpDET1eyjWrDXG0YUwIzZAJ4jGtZ+CSTvbUQdR0i/816NnzmAs4fpB1Jeq/EjK9QH7QfqT7Af6NRPirwCacNPCm/P9S4/KaUtv91Pyv0xeY5HFf8A6HNzgOCBMhQAAAAASUVORK5CYII="></a>
+                        <ul>
+                            <li>{% post_to_facebook object_or_url %}</li>
+                            <li>{% post_to_whatsapp object_or_url %} </li>
+                        </ul>
+                    </li>
+                    <li>
+
+                    </li>
                 </ul>
-            </li>
-        </ul>
-    </div>
+            </div>
+        </li>
 
-
-    <div class="favorito">
-        {% if request.user.is_authenticated %}
-            <a href=fav"{% url 'job:favorite_add' opportunity_add.id %}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA1ElEQVR4nO2UPQoCQQyFEwUPIAjewcYDWFp4Aa9ga2lpa6mwTBRvsFfwDtpZi5021uLPJ7OwYrG4jiKo+CAQhpd85BUj8nsa01JjrQaBtfazufvVWD2xnCvkAcDJm6VPIeTwFPIHfFNEoO8BOM5/wIdEFCj9PAAZEcWUknoJkGWMqKkxUGOjxk6NiUxovAaYUhZHR435ne95KY6eRFSDAWocbvqtOoYSUffl++Qtw/s4wHFUYyaOdmbuMUVxNNWI1bEPASzE6MqISq45lfca3WT253QB4vR5X4S2R8oAAAAASUVORK5CYII="></a>
-        {% endif %}
-    </div>
+        <li class="share-fav-buttom-2">
+            <div class="favorito">
+                {% if request.user.is_authenticated %}
+                    <a href=fav"{% url 'job:favorite_add' opportunity_add.id %}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA1ElEQVR4nO2UPQoCQQyFEwUPIAjewcYDWFp4Aa9ga2lpa6mwTBRvsFfwDtpZi5021uLPJ7OwYrG4jiKo+CAQhpd85BUj8nsa01JjrQaBtfazufvVWD2xnCvkAcDJm6VPIeTwFPIHfFNEoO8BOM5/wIdEFCj9PAAZEcWUknoJkGWMqKkxUGOjxk6NiUxovAaYUhZHR435ne95KY6eRFSDAWocbvqtOoYSUffl++Qtw/s4wHFUYyaOdmbuMUVxNNWI1bEPASzE6MqISq45lfca3WT253QB4vR5X4S2R8oAAAAASUVORK5CYII="></a>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
 
 
     <div id="subheader-2"></div>
+
     {% if request.user.is_authenticated %}
-        <div class="job_registrations">
-            {% if new_registraion and cont == 0 %}
-                <h2>Cadastro concluido com sucesso.</h2>
-            {% elif cont == 1%}
-                <h2>O usuário já possui cadastrado na vaga {{ opportunity.title}}</h2>
-            {% else %}
-                <h2>Quero me candidatar</h2>
-                <form method="post" enctype ="multipart/form-data">
-                    {{ registraion_form.as_p }}
-                    {% csrf_token %}
-                    <p><input type="submit" value="Cradastre-se"></p>
-                </form>
-            {% endif %}
-        </div>
-        <div class="similar">
-            <h2>Vagas Similares</h2>
-            {% for opportunity in similar_opportunity %}
-                <p>
-                    <a href="{{ opportunity.get_absolute_url }}">{{ opportunity.title }}</a>
-                </p>
-            {% empty %}
-                Não existe vagas semelhantes
-            {% endfor %}
-        </div>
+        <ul class="form-similar">
+            <li>
+                <div class="job_registrations">
+                    {% if new_registraion and cont == 0 %}
+                        <h2>Cadastro concluido com sucesso.</h2>
+                    {% elif cont == 1%}
+                        <h2>O usuário já possui cadastrado na vaga {{ opportunity.title}}</h2>
+                    {% else %}
+                        <h2>Quero me candidatar</h2>
+                        <form method="post" enctype ="multipart/form-data">
+                            {{ registraion_form.as_p }}
+                            {% csrf_token %}
+                            <p><input type="submit" value="Cradastre-se"></p>
+                        </form>
+                    {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="similar">
+                    <h2>Vagas Similares</h2>
+                    {% for opportunity in similar_opportunity %}
+                        <p>
+                            <a href="{{ opportunity.get_absolute_url }}">{{ opportunity.title }}</a>
+                        </p>
+                    {% empty %}
+                        Não existe vagas semelhantes
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
     {% else %}
         <p>Faça <a href="{% url 'job:login' %}">Login</a> para se cadastra na vaga</p>
     {% endif %}

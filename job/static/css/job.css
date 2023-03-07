@@ -298,10 +298,6 @@ form div.field {
     padding-left: 10px;
 }
 
-.job_registrations {
-    padding-top: 10px;
-}
-
 .total_job_registrations {
     color: #8f8f8f;
     font-size: 14px;
@@ -375,14 +371,6 @@ tags {
     top: -8px;
     font-size: 14px;
     color: dodgerblue;
-}
-
-.similar {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    left: 50%;
-    bottom: 50px;
 }
 
 .menu {
@@ -506,8 +494,28 @@ footer {
     display: none;
 }
 
-.favorito {
-    left: 50px;
+.form-similar {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    height: 250px;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.share-fav {
+    list-style-type: none;
+    display: flex;
+    padding: 1rem;
+}
+
+.share-fav-buttom-1 {
+    width: 4%
+}
+
+.share-fav-buttom-2 {
+    margin-left: 10px;
+    top: 3px;
     position: relative;
-    bottom: 50px;
+
 }
