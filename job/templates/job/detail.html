@@ -14,21 +14,21 @@
             Mais de {{ total_job_registrations }} candidatura{{ total_job_registrations|pluralize }}
         {% endwith %}
     </p>
-    <h1>{{ opportunity.title}}</h1>
+    <h1 class="title-opportunity">{{ opportunity.title}}</h1>
     <p class="tags">{{ opportunity.tags.all|join:", "}}</p>
     <div class="opportunity">
-        <h3>Descrição</h3>
+        <h3 class="text-opportunity">Descrição</h3>
         <div class="descrição">
             {{ opportunity.description|markdown }}
         </div>
 
-        <h3>Salario</h3>
+        <h3 class="text-opportunity">Salario</h3>
         R$ {{ opportunity.wage}}
 
-        <h3>Regime de Contrato</h3>
+        <h3 class="text-opportunity">Regime de Contrato</h3>
         {{ opportunity.hr}}
 
-        <h3>Beneficios</h3>
+        <h3 class="text-opportunity">Beneficios</h3>
 
         {{ opportunity.benefits|markdown}}
     </div>

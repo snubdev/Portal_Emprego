@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <ul class="home">
+        <li>
+            {% if request.user.is_authenticated %}
+                <p class="home-text">Seja bem vindo {{ request.user.first_name }}</p>
+            {% endif %}
+        </li>
+        <li>
+            <h1 class="fav">Favoritos</h1>
+            <div class="profile">
+                <div class="profile-fav">
+                    {% for favorites_opportunity in fav %}
+                        <a href="{{ favorites_opportunity.get_absolute_url }}">
+                            <img class=fav-image src="{{favorites_opportunity.image.url}}" alt="{{ favorites_opportunity.title }}">
+                        </a>
+                        <p>
+                            <a class='fav-title' href="{{ favorites_opportunity.get_absolute_url }}">{{ favorites_opportunity.title }}</a>
+                        </p>
+                    {% empty %}
+                        Vazio
+                    {% endfor %}
+                </div>
+            </div>
+        </li>
+    </ul>
+
+{% endblock %}

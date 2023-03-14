@@ -118,8 +118,9 @@ def user_login(request):
 
 
 @login_required
-def teste(request):
-    return render(request, 'job/teste.html', {'section': teste})
+def home(request):
+    fav = Opportunity.objects.filter(favorites=request.user.id)
+    return render(request, 'job/home.html', {'section': home, 'fav':fav})
 
 
 def register(request):
@@ -151,10 +152,6 @@ def edit(request):
 
     return render(request, 'job/edit.html', {'user_form': user_form, 'job_user_form': job_user_form})
 
-@login_required
-def favorite_teste(request):
-    fav = Opportunity.objects.filter(favorites=request.user.id)
-    return render(request, 'job/favorites.html', {'fav': fav})
 
 @login_required
 def	favorite_add(request, id):
