@@ -40,11 +40,20 @@ class Opportunity(models.Model):
 
     STATUS_Hiring_Regime = (
         ('', ''),
-        ('clt', 'CLT (Efetivo)'),
-        ('pj', 'Pessoa Jurídica'),
-        ('temporario', 'Temporario'),
-        ('estagio', 'Estágio'),
-        ('trainee', 'Trainne')
+        ('CLT', 'CLT (Efetivo)'),
+        ('PJ', 'Pessoa Jurídica'),
+        ('TEMPORARIO', 'Temporario'),
+        ('ESTAGIO', 'Estágio'),
+        ('TRAINEE', 'Trainne')
+    )
+
+    STATUS_Experience_Level = (
+        ('', ''),
+        ('Trainne', 'TRAINEE'),
+        ('Júnior', 'JUNIOR'),
+        ('Pleno', 'PLENO'),
+        ('Sênior', 'SENIOR')
+
     )
 
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
@@ -54,6 +63,8 @@ class Opportunity(models.Model):
     image = models.ImageField(upload_to=f'{n+1} - opportunity/%Y/%m/%d', blank=True)
     wage = models.CharField(max_length=10)
     description = models.TextField(blank=True)
+    experience_level = models.CharField(max_length=20, choices=STATUS_Experience_Level, default='')
+    requirements = models.TextField(blank=True)
     activate = models.DateTimeField(default=timezone.now)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)

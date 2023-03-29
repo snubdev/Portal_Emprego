@@ -18,19 +18,22 @@
     <p class="tags">{{ opportunity.tags.all|join:", "}}</p>
     <div class="opportunity">
         <h3 class="text-opportunity">Descrição</h3>
-        <div class="descrição">
             {{ opportunity.description|markdown }}
-        </div>
+
+        <h3 class="text-opportunity">Nível de experiência</h3>
+            {{ opportunity.experience_level|markdown }}
+
+        <h3 class="text-opportunity">Requisitos</h3>
+            {{ opportunity.requirements|markdown }}
 
         <h3 class="text-opportunity">Salario</h3>
-        R$ {{ opportunity.wage}}
+            R$ {{ opportunity.wage }}
 
         <h3 class="text-opportunity">Regime de Contrato</h3>
-        {{ opportunity.hr}}
+            {{ opportunity.hr }}
 
         <h3 class="text-opportunity">Beneficios</h3>
-
-        {{ opportunity.benefits|markdown}}
+            {{ opportunity.benefits|markdown }}
     </div>
 
     <ul class="share-fav">

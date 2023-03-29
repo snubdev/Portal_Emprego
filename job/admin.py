@@ -11,7 +11,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
     list_display = ['category', 'title', 'slug', 'author',
-                    'image', 'wage', 'description', 'activate',
+                    'image', 'wage', 'description', 'experience_level', 'requirements', 'activate',
                     'create', 'update', 'status', 'hr']
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
