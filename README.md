@@ -2,11 +2,24 @@
 
 ### Instalando as dependências
 ```
-pip install django
+pip install -r requirements.txt
 ```
+### Configurações
+
 ```
-pip install Pillow==7.0.0
+'NAME': 'NAME',
+'USER': 'USER',
+'PASSWORD': 'PASSWORD',
+'HOST': 'HOST',
+'PORT': 'PORT'
 ```
+
+```
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = # Segredo do Consumidor do Google
+```
+
+### 
 ### Execução
 Criando Migração
 

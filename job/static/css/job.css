@@ -425,11 +425,6 @@ footer {
     width: 200px;
 }
 
-.fav-title {
-    left: 40px;
-    position: relative;
-}
-
 .profile-fav {
     width: 200px;
     background-color: #f9f9f9;
@@ -487,4 +482,8 @@ footer {
 
 .home-text {
     font-size: xx-large;
+}
+
+.fav-title {
+    margin: 10px;
 }

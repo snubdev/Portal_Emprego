@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'taggit',
+    'django_social_share',
 
 ]
 
@@ -83,16 +84,11 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        #'NAME': '',
-        #'USER': '',
-        #'PASSWORD': '',
-        #'HOST': 'localhost',
-        #'PORT': ''
-        'NAME': 'postgres',
-        'USER': 'job',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': 'NAME',
+        'USER': 'USER',
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'HOST',
+        'PORT': 'PORT'
     }
 }
 
@@ -139,7 +135,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-LOGIN_REDIRECT_URL = 'job:teste'
+LOGIN_REDIRECT_URL = 'job:home'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
@@ -151,10 +147,5 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2'
 ]
 
-#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # Google Consumer Key
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Segredo do Consumidor do Google
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '45025963503-uhjc9l9frlhbq62bkerlp8ia7871m5r4.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
-
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '' # Segredo do Consumidor do Google

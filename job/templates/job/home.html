@@ -17,8 +17,8 @@
                         <a href="{{ favorites_opportunity.get_absolute_url }}">
                             <img class=fav-image src="{{favorites_opportunity.image.url}}" alt="{{ favorites_opportunity.title }}">
                         </a>
-                        <p>
-                            <a class='fav-title' href="{{ favorites_opportunity.get_absolute_url }}">{{ favorites_opportunity.title }}</a>
+                        <p class="fav-title">
+                            <a href="{{ favorites_opportunity.get_absolute_url }}">{{ favorites_opportunity.title }}</a>
                         </p>
                     {% empty %}
                         Vazio
