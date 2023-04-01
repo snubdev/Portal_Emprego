@@ -4,7 +4,7 @@
 ```
 pip install -r requirements.txt
 ```
-### Configurações
+### Altere o DATABASES no arquivo settings.py
 
 ```
 'NAME': 'NAME',
@@ -13,6 +13,7 @@ pip install -r requirements.txt
 'HOST': 'HOST',
 'PORT': 'PORT'
 ```
+### Altere o SOCIAL_AUTH_GOOGLE_OAUTH2 no arquivo settings.py
 
 ```
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = # Google Consumer Key
